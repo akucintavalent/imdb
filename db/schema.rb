@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_11_192449) do
 
   create_table "titles", force: :cascade do |t|
     t.string "title"
-    t.string "type"
+    t.string "title_type"
     t.integer "year"
     t.string "image"
     t.date "release_date"
