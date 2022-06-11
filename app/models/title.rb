@@ -5,6 +5,7 @@ class Title < ApplicationRecord
   has_many :videos
   has_many :stars
   has_many :actors
+  has_many :writers
 
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :awards
