@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_11_200420) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_11_203227) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_11_200420) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "companies_titles", id: false, force: :cascade do |t|
+    t.bigint "company_id"
+    t.bigint "title_id"
+    t.index ["company_id"], name: "index_companies_titles_on_company_id"
+    t.index ["title_id"], name: "index_companies_titles_on_title_id"
+  end
+
   create_table "images", force: :cascade do |t|
     t.string "img_title"
     t.string "image"
@@ -53,6 +60,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_11_200420) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title_id"], name: "index_images_on_title_id"
+  end
+
+  create_table "names", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -63,6 +77,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_11_200420) do
     t.datetime "updated_at", null: false
     t.index ["title_id"], name: "index_ratings_on_title_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "stars", force: :cascade do |t|
+    t.bigint "name_id", null: false
+    t.bigint "title_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name_id"], name: "index_stars_on_name_id"
+    t.index ["title_id"], name: "index_stars_on_title_id"
   end
 
   create_table "titles", force: :cascade do |t|
@@ -93,7 +116,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_11_200420) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "video_title"
+    t.string "youtube_link"
+    t.bigint "title_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title_id"], name: "index_videos_on_title_id"
+  end
+
   add_foreign_key "images", "titles"
   add_foreign_key "ratings", "titles"
   add_foreign_key "ratings", "users"
+  add_foreign_key "stars", "names"
+  add_foreign_key "stars", "titles"
+  add_foreign_key "videos", "titles"
 end
