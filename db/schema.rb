@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_11_203227) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_11_204729) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actors", force: :cascade do |t|
+    t.bigint "name_id", null: false
+    t.bigint "title_id", null: false
+    t.string "character"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name_id"], name: "index_actors_on_name_id"
+    t.index ["title_id"], name: "index_actors_on_title_id"
+  end
 
   create_table "awards", force: :cascade do |t|
     t.string "name"
@@ -51,6 +61,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_11_203227) do
     t.bigint "title_id"
     t.index ["company_id"], name: "index_companies_titles_on_company_id"
     t.index ["title_id"], name: "index_companies_titles_on_title_id"
+  end
+
+  create_table "directors", force: :cascade do |t|
+    t.bigint "name_id", null: false
+    t.bigint "title_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name_id"], name: "index_directors_on_name_id"
+    t.index ["title_id"], name: "index_directors_on_title_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -125,10 +144,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_11_203227) do
     t.index ["title_id"], name: "index_videos_on_title_id"
   end
 
+  create_table "writers", force: :cascade do |t|
+    t.bigint "name_id", null: false
+    t.bigint "title_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name_id"], name: "index_writers_on_name_id"
+    t.index ["title_id"], name: "index_writers_on_title_id"
+  end
+
+  add_foreign_key "actors", "names"
+  add_foreign_key "actors", "titles"
+  add_foreign_key "directors", "names"
+  add_foreign_key "directors", "titles"
   add_foreign_key "images", "titles"
   add_foreign_key "ratings", "titles"
   add_foreign_key "ratings", "users"
   add_foreign_key "stars", "names"
   add_foreign_key "stars", "titles"
   add_foreign_key "videos", "titles"
+  add_foreign_key "writers", "names"
+  add_foreign_key "writers", "titles"
 end

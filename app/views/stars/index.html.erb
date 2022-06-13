@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Stars</h1>
+
+<div id="stars">
+  <% @stars.each do |star| %>
+    <%= render star %>
+    <p>
+      <%= link_to "Show this star", star %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New star", new_star_path %>

@@ -1,0 +1,10 @@
+<%= form_with(model: company) do |form| %>
+  <% if company.errors.any? %>
+    <% company.errors.full_messages.each do |message| %>
+      <%= form.label(:name, message) %>
+    <% end %>
+  <% end %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.submit %>
+<% end %>

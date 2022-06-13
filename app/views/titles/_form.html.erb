@@ -1,0 +1,72 @@
+<%= form_with(model: title) do |form| %>
+  <% if title.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(title.errors.count, "error") %> prohibited this title from being saved:</h2>
+
+      <ul>
+        <% title.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :title_type, style: "display: block" %>
+    <%= form.text_field :title_type %>
+  </div>
+
+  <div>
+    <%= form.label :year, style: "display: block" %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.text_field :image %>
+  </div>
+
+  <div>
+    <%= form.label :release_date, style: "display: block" %>
+    <%= form.date_field :release_date %>
+  </div>
+
+  <div>
+    <%= form.label :minutes, style: "display: block" %>
+    <%= form.number_field :minutes %>
+  </div>
+
+  <div>
+    <%= form.label :plot, style: "display: block" %>
+    <%= form.text_area :plot %>
+  </div>
+
+  <div>
+    <%= form.label :countries, style: "display: block" %>
+    <%= form.text_field :countries %>
+  </div>
+
+  <div>
+    <%= form.label :rating, style: "display: block" %>
+    <%= form.text_field :rating %>
+  </div>
+
+  <div>
+    <%= form.label :votes_count, style: "display: block" %>
+    <%= form.number_field :votes_count %>
+  </div>
+
+  <div>
+    <%= form.label :keywords, style: "display: block" %>
+    <%= form.text_field :keywords %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
