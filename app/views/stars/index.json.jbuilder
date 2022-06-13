@@ -1,1 +1,1 @@
-json.array! @stars, partial: "stars/star", as: :star
+json.array! @stars, partial: 'stars/star', as: :star

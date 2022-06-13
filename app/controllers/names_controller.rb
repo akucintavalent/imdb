@@ -1,5 +1,5 @@
 class NamesController < ApplicationController
-  before_action :set_name, only: %i[ show edit update destroy ]
+  before_action :set_name, only: %i[show edit update destroy]
 
   # GET /names or /names.json
   def index
@@ -7,8 +7,7 @@ class NamesController < ApplicationController
   end
 
   # GET /names/1 or /names/1.json
-  def show
-  end
+  def show; end
 
   # GET /names/new
   def new
@@ -16,8 +15,7 @@ class NamesController < ApplicationController
   end
 
   # GET /names/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /names or /names.json
   def create
@@ -25,7 +23,7 @@ class NamesController < ApplicationController
 
     respond_to do |format|
       if @name.save
-        format.html { redirect_to name_url(@name), notice: "Name was successfully created." }
+        format.html { redirect_to name_url(@name), notice: 'Name was successfully created.' }
         format.json { render :show, status: :created, location: @name }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class NamesController < ApplicationController
   def update
     respond_to do |format|
       if @name.update(name_params)
-        format.html { redirect_to name_url(@name), notice: "Name was successfully updated." }
+        format.html { redirect_to name_url(@name), notice: 'Name was successfully updated.' }
         format.json { render :show, status: :ok, location: @name }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class NamesController < ApplicationController
     @name.destroy
 
     respond_to do |format|
-      format.html { redirect_to names_url, notice: "Name was successfully destroyed." }
+      format.html { redirect_to names_url, notice: 'Name was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_name
-      @name = Name.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def name_params
-      params.require(:name).permit(:name, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_name
+    @name = Name.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def name_params
+    params.require(:name).permit(:name, :image)
+  end
 end

@@ -1,1 +1,1 @@
-json.partial! "stars/star", star: @star
+json.partial! 'stars/star', star: @star

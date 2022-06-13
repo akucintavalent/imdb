@@ -1,1 +1,1 @@
-json.array! @directors, partial: "directors/director", as: :director
+json.array! @directors, partial: 'directors/director', as: :director

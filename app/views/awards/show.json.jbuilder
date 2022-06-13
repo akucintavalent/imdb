@@ -1,1 +1,1 @@
-json.partial! "awards/award", award: @award
+json.partial! 'awards/award', award: @award

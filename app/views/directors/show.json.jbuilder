@@ -1,1 +1,1 @@
-json.partial! "directors/director", director: @director
+json.partial! 'directors/director', director: @director

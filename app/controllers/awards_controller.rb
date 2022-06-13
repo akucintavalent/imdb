@@ -1,5 +1,5 @@
 class AwardsController < ApplicationController
-  before_action :set_award, only: %i[ show edit update destroy ]
+  before_action :set_award, only: %i[show edit update destroy]
 
   # GET /awards or /awards.json
   def index
@@ -7,8 +7,7 @@ class AwardsController < ApplicationController
   end
 
   # GET /awards/1 or /awards/1.json
-  def show
-  end
+  def show; end
 
   # GET /awards/new
   def new
@@ -16,8 +15,7 @@ class AwardsController < ApplicationController
   end
 
   # GET /awards/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /awards or /awards.json
   def create
@@ -25,7 +23,7 @@ class AwardsController < ApplicationController
 
     respond_to do |format|
       if @award.save
-        format.html { redirect_to award_url(@award), notice: "Award was successfully created." }
+        format.html { redirect_to award_url(@award), notice: 'Award was successfully created.' }
         format.json { render :show, status: :created, location: @award }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class AwardsController < ApplicationController
   def update
     respond_to do |format|
       if @award.update(award_params)
-        format.html { redirect_to award_url(@award), notice: "Award was successfully updated." }
+        format.html { redirect_to award_url(@award), notice: 'Award was successfully updated.' }
         format.json { render :show, status: :ok, location: @award }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class AwardsController < ApplicationController
     @award.destroy
 
     respond_to do |format|
-      format.html { redirect_to awards_url, notice: "Award was successfully destroyed." }
+      format.html { redirect_to awards_url, notice: 'Award was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_award
-      @award = Award.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def award_params
-      params.require(:award).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_award
+    @award = Award.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def award_params
+    params.require(:award).permit(:name)
+  end
 end

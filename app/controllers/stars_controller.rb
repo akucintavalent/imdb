@@ -1,5 +1,5 @@
 class StarsController < ApplicationController
-  before_action :set_star, only: %i[ show edit update destroy ]
+  before_action :set_star, only: %i[show edit update destroy]
 
   # GET /stars or /stars.json
   def index
@@ -7,8 +7,7 @@ class StarsController < ApplicationController
   end
 
   # GET /stars/1 or /stars/1.json
-  def show
-  end
+  def show; end
 
   # GET /stars/new
   def new
@@ -16,8 +15,7 @@ class StarsController < ApplicationController
   end
 
   # GET /stars/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /stars or /stars.json
   def create
@@ -25,7 +23,7 @@ class StarsController < ApplicationController
 
     respond_to do |format|
       if @star.save
-        format.html { redirect_to star_url(@star), notice: "Star was successfully created." }
+        format.html { redirect_to star_url(@star), notice: 'Star was successfully created.' }
         format.json { render :show, status: :created, location: @star }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class StarsController < ApplicationController
   def update
     respond_to do |format|
       if @star.update(star_params)
-        format.html { redirect_to star_url(@star), notice: "Star was successfully updated." }
+        format.html { redirect_to star_url(@star), notice: 'Star was successfully updated.' }
         format.json { render :show, status: :ok, location: @star }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class StarsController < ApplicationController
     @star.destroy
 
     respond_to do |format|
-      format.html { redirect_to stars_url, notice: "Star was successfully destroyed." }
+      format.html { redirect_to stars_url, notice: 'Star was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_star
-      @star = Star.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def star_params
-      params.require(:star).permit(:name_id, :title_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_star
+    @star = Star.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def star_params
+    params.require(:star).permit(:name_id, :title_id)
+  end
 end

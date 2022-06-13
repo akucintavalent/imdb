@@ -1,5 +1,5 @@
 class ActorsController < ApplicationController
-  before_action :set_actor, only: %i[ show edit update destroy ]
+  before_action :set_actor, only: %i[show edit update destroy]
 
   # GET /actors or /actors.json
   def index
@@ -7,8 +7,7 @@ class ActorsController < ApplicationController
   end
 
   # GET /actors/1 or /actors/1.json
-  def show
-  end
+  def show; end
 
   # GET /actors/new
   def new
@@ -16,8 +15,7 @@ class ActorsController < ApplicationController
   end
 
   # GET /actors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /actors or /actors.json
   def create
@@ -25,7 +23,7 @@ class ActorsController < ApplicationController
 
     respond_to do |format|
       if @actor.save
-        format.html { redirect_to actor_url(@actor), notice: "Actor was successfully created." }
+        format.html { redirect_to actor_url(@actor), notice: 'Actor was successfully created.' }
         format.json { render :show, status: :created, location: @actor }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class ActorsController < ApplicationController
   def update
     respond_to do |format|
       if @actor.update(actor_params)
-        format.html { redirect_to actor_url(@actor), notice: "Actor was successfully updated." }
+        format.html { redirect_to actor_url(@actor), notice: 'Actor was successfully updated.' }
         format.json { render :show, status: :ok, location: @actor }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class ActorsController < ApplicationController
     @actor.destroy
 
     respond_to do |format|
-      format.html { redirect_to actors_url, notice: "Actor was successfully destroyed." }
+      format.html { redirect_to actors_url, notice: 'Actor was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_actor
-      @actor = Actor.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def actor_params
-      params.require(:actor).permit(:name_id, :title_id, :character)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_actor
+    @actor = Actor.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def actor_params
+    params.require(:actor).permit(:name_id, :title_id, :character)
+  end
 end

@@ -1,5 +1,5 @@
 class TitlesController < ApplicationController
-  before_action :set_title, only: %i[ show edit update destroy ]
+  before_action :set_title, only: %i[show edit update destroy]
 
   # GET /titles or /titles.json
   def index
@@ -7,8 +7,7 @@ class TitlesController < ApplicationController
   end
 
   # GET /titles/1 or /titles/1.json
-  def show
-  end
+  def show; end
 
   # GET /titles/new
   def new
@@ -16,8 +15,7 @@ class TitlesController < ApplicationController
   end
 
   # GET /titles/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /titles or /titles.json
   def create
@@ -25,7 +23,7 @@ class TitlesController < ApplicationController
 
     respond_to do |format|
       if @title.save
-        format.html { redirect_to title_url(@title), notice: "Title was successfully created." }
+        format.html { redirect_to title_url(@title), notice: 'Title was successfully created.' }
         format.json { render :show, status: :created, location: @title }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class TitlesController < ApplicationController
   def update
     respond_to do |format|
       if @title.update(title_params)
-        format.html { redirect_to title_url(@title), notice: "Title was successfully updated." }
+        format.html { redirect_to title_url(@title), notice: 'Title was successfully updated.' }
         format.json { render :show, status: :ok, location: @title }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,21 @@ class TitlesController < ApplicationController
     @title.destroy
 
     respond_to do |format|
-      format.html { redirect_to titles_url, notice: "Title was successfully destroyed." }
+      format.html { redirect_to titles_url, notice: 'Title was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_title
-      @title = Title.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def title_params
-      params.require(:title).permit(:title, :title_type, :year, :image, :release_date, :minutes, :plot, :countries, :rating, :votes_count, :keywords)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_title
+    @title = Title.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def title_params
+    params.require(:title).permit(:title, :title_type, :year, :image, :release_date, :minutes, :plot, :countries,
+                                  :rating, :votes_count, :keywords)
+  end
 end

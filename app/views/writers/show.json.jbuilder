@@ -1,1 +1,1 @@
-json.partial! "writers/writer", writer: @writer
+json.partial! 'writers/writer', writer: @writer

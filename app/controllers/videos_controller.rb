@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-  before_action :set_video, only: %i[ show edit update destroy ]
+  before_action :set_video, only: %i[show edit update destroy]
 
   # GET /videos or /videos.json
   def index
@@ -7,8 +7,7 @@ class VideosController < ApplicationController
   end
 
   # GET /videos/1 or /videos/1.json
-  def show
-  end
+  def show; end
 
   # GET /videos/new
   def new
@@ -16,8 +15,7 @@ class VideosController < ApplicationController
   end
 
   # GET /videos/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /videos or /videos.json
   def create
@@ -25,7 +23,7 @@ class VideosController < ApplicationController
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to video_url(@video), notice: "Video was successfully created." }
+        format.html { redirect_to video_url(@video), notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class VideosController < ApplicationController
   def update
     respond_to do |format|
       if @video.update(video_params)
-        format.html { redirect_to video_url(@video), notice: "Video was successfully updated." }
+        format.html { redirect_to video_url(@video), notice: 'Video was successfully updated.' }
         format.json { render :show, status: :ok, location: @video }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class VideosController < ApplicationController
     @video.destroy
 
     respond_to do |format|
-      format.html { redirect_to videos_url, notice: "Video was successfully destroyed." }
+      format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_video
-      @video = Video.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def video_params
-      params.require(:video).permit(:video_title, :youtube_link, :title_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_video
+    @video = Video.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def video_params
+    params.require(:video).permit(:video_title, :youtube_link, :title_id)
+  end
 end

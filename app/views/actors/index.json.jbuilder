@@ -1,1 +1,1 @@
-json.array! @actors, partial: "actors/actor", as: :actor
+json.array! @actors, partial: 'actors/actor', as: :actor
