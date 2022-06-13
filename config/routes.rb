@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :titles
   resources :names
   resources :actors
   resources :directors
