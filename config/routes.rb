@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :awards
   get 'user/index'
   devise_for :users
